@@ -38,7 +38,7 @@ export function Hero() {
               rel="noreferrer"
               className="rounded-full bg-volt text-ink px-7 py-3.5 font-semibold hover:opacity-90 transition"
             >
-              Apply for a Sprint →
+              Apply for System Diagnosis →
             </a>
             <a
               href="#work"
