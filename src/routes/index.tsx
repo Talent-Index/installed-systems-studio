@@ -1,29 +1,48 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/foeg/Nav";
+import { Hero } from "@/components/foeg/Hero";
+import { Problem } from "@/components/foeg/Problem";
+import { Offer } from "@/components/foeg/Offer";
+import { Work } from "@/components/foeg/Work";
+import { Process } from "@/components/foeg/Process";
+import { Learning } from "@/components/foeg/Learning";
+import { Community } from "@/components/foeg/Community";
+import { Investor } from "@/components/foeg/Investor";
+import { ApplyFooter } from "@/components/foeg/ApplyFooter";
+
+const TITLE = "FOEG Labs — Systems Implementation for Serious African Operators";
+const DESC =
+  "FOEG Labs installs AI-powered operational systems for revenue-generating African businesses — in 30 days, fixed scope, milestone payments. Installed. Not consulted.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: TITLE },
+      { name: "description", content: DESC },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESC },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESC },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="bg-ink text-paper min-h-screen">
+      <Nav />
+      <Hero />
+      <Problem />
+      <Offer />
+      <Work />
+      <Process />
+      <Learning />
+      <Community />
+      <Investor />
+      <ApplyFooter />
+    </main>
   );
 }
