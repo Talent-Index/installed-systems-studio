@@ -1,6 +1,6 @@
 import { Reveal } from "./Reveal";
 
-const APPLY_URL = "https://tally.so/r/FOEG-APPLY";
+const APPLY_URL = "https://tally.so/r/LZMbQl";
 
 const projects = [
   {

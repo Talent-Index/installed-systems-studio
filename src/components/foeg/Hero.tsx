@@ -1,4 +1,4 @@
-const APPLY_URL = "https://tally.so/r/FOEG-APPLY";
+const APPLY_URL = "https://tally.so/r/LZMbQl";
 const TICKER = [
   "Systems Implementation Sprint",
   "KSh 400K–650K",
