@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
 
-const links = [
-  { href: "#offer", label: "What We Do" },
-  { href: "#work", label: "Our Work" },
-  { href: "#learning", label: "Learning" },
-  { href: "#community", label: "Community" },
+const links: { to: string; hash?: string; label: string }[] = [
+  { to: "/", hash: "offer", label: "What We Do" },
+  { to: "/work", label: "Our Work" },
+  { to: "/tribe", label: "Our Tribe" },
+  { to: "/", hash: "learning", label: "Learning" },
+  { to: "/", hash: "community", label: "Community" },
 ];
 
-const APPLY_URL = "https://tally.so/r/FOEG-APPLY";
+export const APPLY_URL = "https://tally.so/r/LZMbQl";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string>("");
+  const [activeHash, setActiveHash] = useState<string>("");
   const [scrolled, setScrolled] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -22,11 +25,12 @@ export function Nav() {
   }, []);
 
   useEffect(() => {
-    const ids = links.map((l) => l.href.slice(1));
+    if (pathname !== "/") return;
+    const ids = links.filter((l) => l.hash).map((l) => l.hash!);
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) setActive("#" + e.target.id);
+          if (e.isIntersecting) setActiveHash(e.target.id);
         });
       },
       { rootMargin: "-40% 0px -55% 0px" }
@@ -36,7 +40,13 @@ export function Nav() {
       if (el) obs.observe(el);
     });
     return () => obs.disconnect();
-  }, []);
+  }, [pathname]);
+
+  const linkHref = (l: typeof links[number]) => (l.hash ? `/#${l.hash}` : l.to);
+  const isActive = (l: typeof links[number]) => {
+    if (l.hash) return pathname === "/" && activeHash === l.hash;
+    return pathname === l.to;
+  };
 
   return (
     <header
@@ -45,20 +55,23 @@ export function Nav() {
       }`}
     >
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 h-16 md:h-20 flex items-center justify-between">
-        <a href="#top" className="font-display font-extrabold tracking-tight text-paper text-lg md:text-xl">
+        <Link to="/" className="font-display font-extrabold tracking-tight text-paper text-lg md:text-xl">
           FOEG<span className="text-volt">.</span>LABS
-        </a>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <a
-              key={l.href}
-              href={l.href}
-              className={`text-sm tracking-wide transition-colors ${
-                active === l.href ? "text-paper" : "text-mute hover:text-paper"
+              key={l.label}
+              href={linkHref(l)}
+              className={`text-sm tracking-wide transition-colors relative ${
+                isActive(l) ? "text-paper" : "text-mute hover:text-paper"
               }`}
             >
               {l.label}
+              {isActive(l) && (
+                <span className="absolute -bottom-1.5 left-0 right-0 h-[2px] bg-volt" />
+              )}
             </a>
           ))}
           <a
@@ -94,7 +107,7 @@ export function Nav() {
           </div>
           <nav className="flex-1 flex flex-col items-start justify-center gap-6 px-8">
             {links.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="font-display text-4xl font-bold text-paper">
+              <a key={l.label} href={linkHref(l)} onClick={() => setOpen(false)} className="font-display text-4xl font-bold text-paper">
                 {l.label}
               </a>
             ))}
@@ -105,7 +118,7 @@ export function Nav() {
               onClick={() => setOpen(false)}
               className="mt-4 rounded-full bg-volt text-ink px-6 py-3 font-semibold"
             >
-              Apply for a Sprint
+              Apply for System Diagnosis
             </a>
           </nav>
         </div>
