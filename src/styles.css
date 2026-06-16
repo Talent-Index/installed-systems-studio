@@ -51,7 +51,9 @@
   --surface: oklch(0.19 0 0);        /* #141414 */
   --divider: oklch(0.26 0 0);        /* #222222 */
   --mute: oklch(0.6 0 0);            /* #888888 */
-  --volt: oklch(0.93 0.23 125);      /* #C8FF00 */
+  --volt: oklch(0.762 0.094 295);    /* #B8A9FF lavender brand accent */
+  --volt-hover: oklch(0.85 0.07 295); /* #D4CAFF */
+  --volt-deep: oklch(0.6 0.13 290);   /* #7B6ED6 */
 
   --background: var(--ink);
   --foreground: var(--paper);
