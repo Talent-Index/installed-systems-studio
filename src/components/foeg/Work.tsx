@@ -1,38 +1,42 @@
+import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
 
-const APPLY_URL = "https://tally.so/r/FOEG-APPLY";
+const APPLY_URL = "https://tally.so/r/LZMbQl";
 
 const projects = [
   {
-    name: "RickyBags",
-    tag: "Manufacturing · Sustainable",
-    price: "KSh 550,000 Sprint",
+    name: "AvaRamp",
+    tag: "Fintech · Payments · Live",
+    price: "Live Product",
     bullets: [
-      "Installed inventory workflow automation",
-      "WhatsApp order management system",
+      "USDC on Avalanche → KES, NGN, GHS, TZS, UGX.",
+      "Settles to M-Pesa in under 3 minutes.",
     ],
-    status: "Sprint 1 — Delivered",
-    cta: { label: "View Build Log →", href: "#work" },
+    status: "LIVE",
+    cta: { label: "View All Work →", to: "/work" as const },
     accent: false,
   },
   {
-    name: "Upcoming Sprint",
-    tag: "Fintech · VASP Compliance Ops",
-    price: "Slot Open",
-    bullets: ["This slot is open.", "Apply before June 30."],
-    status: "July Cohort — Open",
-    cta: { label: "Apply →", href: APPLY_URL },
+    name: "AutopayKE",
+    tag: "Fintech · Mobile Money · Live",
+    price: "Live Product",
+    bullets: [
+      "Phone-first money for Africa.",
+      "M-Pesa, MoMo, Wave or bank — in seconds.",
+    ],
+    status: "LIVE",
+    cta: { label: "View All Work →", to: "/work" as const },
     accent: true,
   },
   {
-    name: "One Slot Remaining",
-    tag: "July Cohort",
-    price: "Final Slot",
+    name: "Open Sprint Slot",
+    tag: "July 2026 · 1 Slot",
+    price: "Apply Now",
     bullets: [
+      "1 slot open · July 2026.",
       "Serious operators only.",
-      "Maximum 3 clients per month.",
     ],
-    status: "Closing Soon",
+    status: "OPEN",
     cta: { label: "Apply →", href: APPLY_URL },
     accent: false,
   },
@@ -57,12 +61,9 @@ export function Work() {
         </div>
 
         <div className="mt-16 grid md:grid-cols-3 gap-5">
-          {projects.map((p, i) => (
-            <Reveal key={p.name} delay={i * 100}>
-              <a
-                href={p.cta.href}
-                target={p.cta.href.startsWith("http") ? "_blank" : undefined}
-                rel="noreferrer"
+          {projects.map((p, i) => {
+            const inner = (
+              <div
                 className={`group block h-full rounded-md overflow-hidden border transition ${
                   p.accent
                     ? "bg-volt text-ink border-volt"
@@ -70,11 +71,12 @@ export function Work() {
                 }`}
               >
                 <div className={`aspect-[4/3] relative overflow-hidden ${p.accent ? "bg-ink" : "bg-surface"}`}>
-                  <div className="absolute inset-0 opacity-60"
-                       style={{
-                         backgroundImage:
-                           "radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--color-volt) 20%, transparent), transparent 50%), radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--color-paper) 8%, transparent), transparent 60%)",
-                       }}
+                  <div
+                    className="absolute inset-0 opacity-60"
+                    style={{
+                      backgroundImage:
+                        "radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--color-volt) 30%, transparent), transparent 50%), radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--color-paper) 8%, transparent), transparent 60%)",
+                    }}
                   />
                   <div className="absolute inset-0 grid grid-cols-6 grid-rows-6">
                     {Array.from({ length: 36 }).map((_, idx) => (
@@ -107,15 +109,29 @@ export function Work() {
                     {p.cta.label}
                   </p>
                 </div>
-              </a>
-            </Reveal>
-          ))}
+              </div>
+            );
+            return (
+              <Reveal key={p.name} delay={i * 100}>
+                {"href" in p.cta && p.cta.href ? (
+                  <a href={p.cta.href} target="_blank" rel="noreferrer">{inner}</a>
+                ) : (
+                  <Link to={p.cta.to!}>{inner}</Link>
+                )}
+              </Reveal>
+            );
+          })}
         </div>
 
-        <p className="mt-12 font-mono text-xs text-ink/55 max-w-2xl">
-          No fabricated testimonials. No revenue outcome guarantees.
-          Just documented proof of installed, working systems.
-        </p>
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4">
+          <p className="font-mono text-xs text-ink/55 max-w-2xl">
+            No fabricated testimonials. No revenue outcome guarantees.
+            Just documented proof of installed, working systems.
+          </p>
+          <Link to="/work" className="font-mono text-xs tracking-widest text-ink underline underline-offset-4 hover:text-[color:var(--volt-deep)]">
+            VIEW ALL OUR WORK →
+          </Link>
+        </div>
       </div>
     </section>
   );

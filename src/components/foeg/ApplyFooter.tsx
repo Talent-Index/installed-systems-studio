@@ -1,6 +1,14 @@
+import { Mail, MessageCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { APPLY_URL } from "./Nav";
 
-const APPLY_URL = "https://tally.so/r/FOEG-APPLY";
+function XIcon({ size = 24 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.844l-5.36-7.01L4.6 22H1.34l8.02-9.16L1 2h7.02l4.84 6.4L18.244 2Zm-2.4 18h1.9L7.26 4H5.26l10.584 16Z" />
+    </svg>
+  );
+}
 
 export function ApplyFooter() {
   return (
@@ -25,7 +33,7 @@ export function ApplyFooter() {
             rel="noreferrer"
             className="rounded-full bg-volt text-ink px-9 py-4 font-semibold text-lg hover:opacity-90 transition"
           >
-            Apply for a Systems Sprint →
+            Apply for System Diagnosis →
           </a>
           <span className="font-mono text-xs tracking-widest text-mute">
             NEXT COHORT: JULY 2026 · 1 SLOT REMAINING
@@ -48,25 +56,58 @@ export function ApplyFooter() {
           <div className="flex flex-col gap-2 md:items-center">
             <p className="font-mono text-[10px] tracking-widest text-mute mb-2">SITEMAP</p>
             {[
-              ["What We Do", "#offer"],
-              ["Our Work", "#work"],
-              ["Learning", "#learning"],
-              ["Community", "#community"],
-              ["Apply", "#apply"],
+              ["What We Do", "/#offer"],
+              ["Our Work", "/work"],
+              ["Our Tribe", "/tribe"],
+              ["Learning", "/#learning"],
+              ["Community", "/#community"],
+              ["Apply", "/#apply"],
             ].map(([l, h]) => (
               <a key={h} href={h} className="text-sm text-paper/80 hover:text-volt transition">{l}</a>
             ))}
           </div>
-          <div className="flex flex-col gap-3 md:items-end">
+          <div className="flex flex-col gap-4 md:items-end">
             <p className="font-mono text-[10px] tracking-widest text-mute">CONTACT</p>
-            <a href="https://x.com/foeg_Labs" target="_blank" rel="noreferrer" className="text-sm text-paper/80 hover:text-volt">X — @foeg_Labs</a>
-            <a href="mailto:Foeglabslimited@gmail.com" className="text-sm text-paper/80 hover:text-volt">Foeglabslimited@gmail.com</a>
-            <a href="https://chat.whatsapp.com/" target="_blank" rel="noreferrer" className="text-sm text-paper/80 hover:text-volt">WhatsApp Community</a>
+            <div className="flex items-center gap-5">
+              <a
+                href="https://x.com/foeg_Labs"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Follow on X"
+                className="text-paper hover:text-volt transition"
+              >
+                <XIcon size={22} />
+              </a>
+              <a
+                href="mailto:Foeglabslimited@gmail.com"
+                aria-label="Email Us"
+                className="text-paper hover:text-volt transition"
+              >
+                <Mail size={24} />
+              </a>
+              <a
+                href="https://tally.so/r/LZMbQl"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Join Avalanche Community on WhatsApp"
+                className="text-paper hover:text-[#25D366] transition"
+              >
+                <MessageCircle size={24} />
+              </a>
+            </div>
+            <a
+              href="https://tally.so/r/LZMbQl"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm text-paper/80 hover:text-volt transition"
+            >
+              Join Avalanche Community →
+            </a>
           </div>
         </div>
         <div className="border-t border-divider">
           <p className="mx-auto max-w-[1400px] px-6 md:px-10 py-6 font-mono text-[11px] tracking-widest text-mute">
-            © 2026 FOEG LABS LIMITED · REGISTERED IN KENYA · BUILT WITH INTENT.
+            © 2026 FOEG LABS LIMITED · REGISTERED IN KENYA · ABC PLACE, 10TH FLOOR, ANTLER, NAIROBI · X.COM/FOEG_LABS
           </p>
         </div>
       </div>
