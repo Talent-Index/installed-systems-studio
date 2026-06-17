@@ -48,7 +48,7 @@ export function Offer() {
         <div className="mt-16 grid md:grid-cols-3 gap-5">
           {cols.map((c, i) => (
             <Reveal key={c.label} delay={i * 100}>
-              <div className="h-full p-8 bg-surface border border-divider rounded-md flex flex-col">
+              <div className="card-surface h-full p-8 bg-surface border border-divider rounded-md flex flex-col">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-xs text-mute">0{i + 1}</span>
                   {c.tag && (
@@ -96,9 +96,9 @@ export function Offer() {
             href={APPLY_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-block rounded-full bg-volt text-ink px-8 py-4 font-semibold hover:opacity-90 transition"
+            className="btn-volt link-arrow inline-block rounded-full px-8 py-4 font-semibold"
           >
-            Apply Now →
+            Apply Now <span className="arrow">→</span>
           </a>
         </div>
       </div>

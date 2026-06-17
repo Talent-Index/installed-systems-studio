@@ -64,10 +64,10 @@ export function Work() {
           {projects.map((p, i) => {
             const inner = (
               <div
-                className={`group block h-full rounded-md overflow-hidden border transition ${
+                className={`group block h-full rounded-md overflow-hidden border ${
                   p.accent
-                    ? "bg-volt text-ink border-volt"
-                    : "bg-ink text-paper border-ink hover:bg-[#0e0e0e]"
+                    ? "bg-volt text-ink border-volt card-surface"
+                    : "card-surface bg-surface text-paper border-divider"
                 }`}
               >
                 <div className={`aspect-[4/3] relative overflow-hidden ${p.accent ? "bg-ink" : "bg-surface"}`}>

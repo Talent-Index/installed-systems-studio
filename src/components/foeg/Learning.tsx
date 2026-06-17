@@ -44,7 +44,7 @@ export function Learning() {
         <div className="mt-16 grid md:grid-cols-3 gap-5">
           {cards.map((c, i) => (
             <Reveal key={c.title} delay={i * 100}>
-              <div className="h-full bg-ink text-paper rounded-md border border-ink p-8 flex flex-col">
+              <div className="card-surface h-full bg-surface text-paper rounded-md border border-divider p-8 flex flex-col">
                 <span className="font-mono text-[10px] tracking-widest text-volt">{c.tag}</span>
                 <h3 className="mt-8 font-display font-bold text-2xl leading-tight min-h-[5rem]">{c.title}</h3>
                 <p className="mt-4 text-paper/70 text-[15px] leading-relaxed flex-1">{c.desc}</p>

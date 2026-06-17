@@ -35,7 +35,7 @@ export function Community() {
         <div className="mt-16 grid md:grid-cols-3 gap-5">
           {blocks.map((b, i) => (
             <Reveal key={b.title} delay={i * 100}>
-              <div className="h-full p-8 bg-surface border border-divider rounded-md flex flex-col">
+              <div className="card-surface h-full p-8 bg-surface border border-divider rounded-md flex flex-col">
                 <div className="flex items-center justify-between">
                   <span className="font-display text-3xl text-volt">{b.glyph}</span>
                   <span className="font-mono text-[10px] text-mute tracking-widest">0{i + 1}</span>

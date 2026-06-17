@@ -39,7 +39,7 @@ export function Problem() {
           <div className="md:col-span-8 grid sm:grid-cols-2 gap-5">
             {pains.map((p, i) => (
               <Reveal key={p.n} delay={i * 80}>
-                <div className="group h-full bg-ink text-paper p-8 rounded-md border border-ink hover:bg-[#0e0e0e] transition">
+                <div className="card-surface group h-full bg-surface text-paper p-8 rounded-md border border-divider">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs text-mute">{p.n}</span>
                     <span className="h-1.5 w-1.5 rounded-full bg-volt" />

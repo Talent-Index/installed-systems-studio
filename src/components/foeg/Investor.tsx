@@ -34,9 +34,9 @@ export function Investor() {
             href="https://calendly.com/foeglabslimited/30min"
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-volt text-ink px-7 py-3.5 font-semibold hover:opacity-90 transition"
+            className="btn-volt link-arrow rounded-full px-7 py-3.5 font-semibold"
           >
-            Book a Discovery Call →
+            Book a Discovery Call <span className="arrow">→</span>
           </a>
           <a
             href="mailto:Foeglabslimited@gmail.com?subject=Partner%20Brief%20Request"
