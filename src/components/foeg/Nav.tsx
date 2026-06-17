@@ -50,8 +50,10 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-ink/90 backdrop-blur-md border-b border-divider" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "backdrop-blur-[12px] border-b border-white/[0.06] bg-[rgba(10,10,10,0.85)]"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 h-16 md:h-20 flex items-center justify-between">
@@ -78,7 +80,7 @@ export function Nav() {
             href={APPLY_URL}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-volt text-ink px-5 py-2 text-sm font-semibold hover:opacity-90 transition"
+            className="btn-volt rounded-full px-5 py-2 text-sm font-semibold"
           >
             Apply
           </a>
