@@ -79,7 +79,7 @@ export function Hero() {
 
         <div className="flex-1 flex flex-col justify-center py-16 md:py-24">
           <h1 className="font-display font-extrabold tracking-[-0.03em] leading-[0.92] text-[14vw] md:text-[9.5vw] lg:text-[8.5vw]">
-            <span {...a("hero-anim block text-paper", 150)} className={`block text-paper ${animate ? "hero-anim" : ""}`} style={animate ? { animationDelay: "150ms" } : undefined}>
+            <span className={`block text-paper ${animate ? "hero-anim" : ""}`} style={animate ? { animationDelay: "150ms" } : undefined}>
               African businesses
             </span>
             <span className={`block text-volt ${animate ? "hero-anim" : ""}`} style={animate ? { animationDelay: "250ms" } : undefined}>
