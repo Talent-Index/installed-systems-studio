@@ -31,9 +31,9 @@ export function ApplyFooter() {
             href={APPLY_URL}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-volt text-ink px-9 py-4 font-semibold text-lg hover:opacity-90 transition"
+            className="btn-volt link-arrow rounded-full px-9 py-4 font-semibold text-lg"
           >
-            Apply for System Diagnosis →
+            Apply for System Diagnosis <span className="arrow">→</span>
           </a>
           <span className="font-mono text-xs tracking-widest text-mute">
             NEXT COHORT: JULY 2026 · 1 SLOT REMAINING

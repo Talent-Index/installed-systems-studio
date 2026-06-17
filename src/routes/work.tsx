@@ -109,7 +109,7 @@ function WorkPage() {
   }, []);
 
   return (
-    <main className="bg-ink text-paper min-h-screen">
+    <main className="bg-ink text-paper min-h-screen page-fade">
       <Nav />
 
       <section className="pt-32 md:pt-44 pb-16 md:pb-24 border-b border-divider">
@@ -130,7 +130,7 @@ function WorkPage() {
         <div className="mx-auto max-w-[1400px] px-6 md:px-10 grid md:grid-cols-2 gap-6">
           {solutions.map((s, i) => (
             <Reveal key={s.name} delay={i * 80}>
-              <article className="group h-full bg-surface border border-divider rounded-lg p-8 md:p-10 transition hover:border-l-[3px] hover:border-l-volt hover:bg-[#181818]">
+              <article className="card-surface group h-full bg-surface border border-divider rounded-lg p-8 md:p-10">
                 <div className="flex items-center justify-between gap-3">
                   <span className="font-mono text-[10px] tracking-widest text-mute">{s.tag}</span>
                   <StatusBadge status={s.status} />
@@ -161,9 +161,9 @@ function WorkPage() {
                       href={s.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex rounded-full bg-volt text-ink px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition"
+                      className="btn-volt link-arrow inline-flex rounded-full px-5 py-2.5 text-sm font-semibold"
                     >
-                      {s.ctaLabel}
+                      {s.ctaLabel?.replace(" →", "")} <span className="arrow">→</span>
                     </a>
                   ) : (
                     <p className="font-mono text-xs tracking-widest text-mute uppercase">

@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="bg-ink text-paper min-h-screen">
+    <main className="bg-ink text-paper min-h-screen page-fade">
       <Nav />
       <Hero />
       <Problem />

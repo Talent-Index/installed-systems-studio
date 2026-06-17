@@ -78,7 +78,7 @@ function TribePage() {
   }, []);
 
   return (
-    <main className="bg-ink text-paper min-h-screen">
+    <main className="bg-ink text-paper min-h-screen page-fade">
       <Nav />
 
       <section className="pt-32 md:pt-44 pb-16 md:pb-24 border-b border-divider">
@@ -103,7 +103,7 @@ function TribePage() {
           <div className="mt-12 grid md:grid-cols-3 gap-6">
             {team.map((p, i) => (
               <Reveal key={p.name} delay={i * 80}>
-                <article className="group h-full bg-surface border border-divider rounded-lg p-8 transition hover:border-l-[3px] hover:border-l-volt">
+                <article className="card-surface group h-full bg-surface border border-divider rounded-lg p-8">
                   <Avatar name={p.name} />
                   <h3 className="mt-6 font-display font-bold text-2xl">{p.name}</h3>
                   <p className="mt-1 font-mono text-[11px] tracking-widest text-volt uppercase">{p.title}</p>
@@ -157,7 +157,7 @@ function TribePage() {
           <div className="mt-12 grid md:grid-cols-3 gap-5">
             {founders.map((f, i) => (
               <Reveal key={i} delay={i * 80}>
-                <article className="h-full bg-surface border border-divider rounded-lg p-6">
+                <article className="card-surface h-full bg-surface border border-divider rounded-lg p-6">
                   <h3 className="font-display font-bold text-xl">{f.name}</h3>
                   <p className="mt-2 text-sm text-paper/70">{f.building}</p>
                   <span className="mt-5 inline-flex font-mono text-[10px] tracking-widest text-volt border border-volt/50 px-2.5 py-1 rounded-full">
