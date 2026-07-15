@@ -46,12 +46,6 @@ const team = [
   },
 ];
 
-const founders = [
-  { name: "Founder Name", building: "Building: a cross-border merchant settlement layer." },
-  { name: "Founder Name", building: "Building: AI-powered logistics dispatch for SMEs." },
-  { name: "Founder Name", building: "Building: stablecoin-native payroll for African startups." },
-];
-
 function XIcon({ size = 18 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -60,18 +54,11 @@ function XIcon({ size = 18 }: { size?: number }) {
   );
 }
 
-function Avatar({ name }: { name: string }) {
-  const initials = name
-    .split(" ")
-    .map((n) => n[0])
-    .slice(0, 2)
-    .join("");
-  return (
-    <div className="h-24 w-24 rounded-full bg-[color:var(--divider)] ring-2 ring-transparent group-hover:ring-volt transition flex items-center justify-center">
-      <span className="font-display font-extrabold text-2xl text-volt">{initials}</span>
-    </div>
-  );
-}
+const teamAvatars: { initial: string; variant: "volt" | "paper" }[] = [
+  { initial: "L", variant: "volt" },
+  { initial: "C", variant: "paper" },
+  { initial: "G", variant: "volt" },
+];
 
 function TribePage() {
   useEffect(() => {
