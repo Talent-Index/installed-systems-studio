@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Nav } from "@/components/foeg/Nav";
 import { ApplyFooter } from "@/components/foeg/ApplyFooter";
 import { Reveal } from "@/components/foeg/Reveal";
+import { TeamAvatar } from "@/components/foeg/TeamAvatar";
 
 const APPLY_URL = "https://tally.so/r/LZMbQl";
 const TITLE = "Our Tribe — FOEG Labs";
