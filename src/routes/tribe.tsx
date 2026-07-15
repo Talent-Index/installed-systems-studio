@@ -92,7 +92,7 @@ function TribePage() {
             {team.map((p, i) => (
               <Reveal key={p.name} delay={i * 80}>
                 <article className="card-surface group h-full bg-surface border border-divider rounded-lg p-8">
-                  <Avatar name={p.name} />
+                  <TeamAvatar initial={teamAvatars[i]?.initial ?? p.name.charAt(0)} variant={teamAvatars[i]?.variant ?? "volt"} />
                   <h3 className="mt-6 font-display font-bold text-2xl">{p.name}</h3>
                   <p className="mt-1 font-mono text-[11px] tracking-widest text-volt uppercase">{p.title}</p>
                   <p className="mt-4 text-paper/70 leading-relaxed text-sm">{p.bio}</p>
@@ -142,19 +142,16 @@ function TribePage() {
             These are the founders building real products within the FOEG Labs / Avalanche operator network.
           </p>
 
-          <div className="mt-12 grid md:grid-cols-3 gap-5">
-            {founders.map((f, i) => (
-              <Reveal key={i} delay={i * 80}>
-                <article className="card-surface h-full bg-surface border border-divider rounded-lg p-6">
-                  <h3 className="font-display font-bold text-xl">{f.name}</h3>
-                  <p className="mt-2 text-sm text-paper/70">{f.building}</p>
-                  <span className="mt-5 inline-flex font-mono text-[10px] tracking-widest text-volt border border-volt/50 px-2.5 py-1 rounded-full">
-                    AVALANCHE MEMBER
-                  </span>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal>
+            <article className="mt-12 bg-ink border border-dashed border-divider rounded-lg p-10 md:p-14 text-center">
+              <p className="font-mono text-[11px] tracking-[0.2em] text-volt uppercase">
+                Founder Spotlights — Coming Soon
+              </p>
+              <p className="mt-5 max-w-xl mx-auto text-paper/70 leading-relaxed">
+                We'll feature real founders building on FOEG-installed systems as Sprint case studies land.
+              </p>
+            </article>
+          </Reveal>
         </div>
       </section>
 
