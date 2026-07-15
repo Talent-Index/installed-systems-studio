@@ -1,44 +1,42 @@
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
+import { TeamAvatar } from "./TeamAvatar";
 
 const APPLY_URL = "https://tally.so/r/LZMbQl";
 
-const projects = [
+type Project = {
+  name: string;
+  initial: string;
+  variant: "volt" | "paper";
+  description: string;
+  status: "LIVE" | "OPEN";
+  cta: { label: string; to?: "/work"; href?: string };
+};
+
+const projects: Project[] = [
   {
     name: "AvaRamp",
-    tag: "Fintech · Payments · Live",
-    price: "Live Product",
-    bullets: [
-      "USDC on Avalanche → KES, NGN, GHS, TZS, UGX.",
-      "Settles to M-Pesa in under 3 minutes.",
-    ],
+    initial: "A",
+    variant: "volt",
+    description: "USDC on Avalanche, settled to M-Pesa in under 3 minutes.",
     status: "LIVE",
-    cta: { label: "View All Work →", to: "/work" as const },
-    accent: false,
+    cta: { label: "View All Work →", to: "/work" },
   },
   {
     name: "AutopayKE",
-    tag: "Fintech · Mobile Money · Live",
-    price: "Live Product",
-    bullets: [
-      "Phone-first money for Africa.",
-      "M-Pesa, MoMo, Wave or bank — in seconds.",
-    ],
+    initial: "K",
+    variant: "paper",
+    description: "Phone-first money across Africa — M-Pesa, MoMo, Wave, bank.",
     status: "LIVE",
-    cta: { label: "View All Work →", to: "/work" as const },
-    accent: true,
+    cta: { label: "View All Work →", to: "/work" },
   },
   {
     name: "Open Sprint Slot",
-    tag: "July 2026 · 1 Slot",
-    price: "Apply Now",
-    bullets: [
-      "1 slot open · July 2026.",
-      "Serious operators only.",
-    ],
+    initial: "◆",
+    variant: "volt",
+    description: "One slot open for July 2026. Serious operators only.",
     status: "OPEN",
     cta: { label: "Apply →", href: APPLY_URL },
-    accent: false,
   },
 ];
 
@@ -63,57 +61,23 @@ export function Work() {
         <div className="mt-16 grid md:grid-cols-3 gap-5">
           {projects.map((p, i) => {
             const inner = (
-              <div
-                className={`group block h-full rounded-md overflow-hidden border ${
-                  p.accent
-                    ? "bg-volt text-ink border-volt card-surface"
-                    : "card-surface bg-surface text-paper border-divider"
-                }`}
-              >
-                <div className={`aspect-[4/3] relative overflow-hidden ${p.accent ? "bg-ink" : "bg-surface"}`}>
-                  <div
-                    className="absolute inset-0 opacity-60"
-                    style={{
-                      backgroundImage:
-                        "radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--color-volt) 30%, transparent), transparent 50%), radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--color-paper) 8%, transparent), transparent 60%)",
-                    }}
-                  />
-                  <div className="absolute inset-0 grid grid-cols-6 grid-rows-6">
-                    {Array.from({ length: 36 }).map((_, idx) => (
-                      <div key={idx} className="border-r border-b border-paper/5" />
-                    ))}
+              <div className="card-surface group h-full bg-ink text-paper border border-divider rounded-md p-8 flex flex-col">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="w-20">
+                    <TeamAvatar initial={p.initial} variant={p.variant} />
                   </div>
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                    <span className={`font-mono text-[10px] tracking-widest ${p.accent ? "text-volt" : "text-mute"}`}>
-                      / {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className={`font-mono text-[10px] tracking-widest ${p.accent ? "text-volt" : "text-mute"}`}>
-                      {p.status}
-                    </span>
-                  </div>
+                  <span className="font-mono text-[10px] tracking-widest text-volt border border-volt/40 px-2.5 py-1 rounded-full shrink-0">
+                    {p.status}
+                  </span>
                 </div>
-                <div className="p-7">
-                  <div className="flex items-center justify-between">
-                    <span className={`font-mono text-[10px] tracking-widest ${p.accent ? "text-ink/70" : "text-mute"}`}>
-                      {p.tag}
-                    </span>
-                    <span className={`font-mono text-[10px] tracking-widest ${p.accent ? "text-ink/70" : "text-mute"}`}>
-                      {p.price}
-                    </span>
-                  </div>
-                  <h3 className="mt-5 font-display font-bold text-2xl leading-tight">{p.name}</h3>
-                  <ul className={`mt-4 space-y-1.5 text-[14px] ${p.accent ? "text-ink/80" : "text-paper/70"}`}>
-                    {p.bullets.map((b) => <li key={b}>— {b}</li>)}
-                  </ul>
-                  <p className={`mt-8 text-sm font-medium ${p.accent ? "text-ink" : "text-volt"}`}>
-                    {p.cta.label}
-                  </p>
-                </div>
+                <h3 className="mt-8 font-display font-bold text-2xl leading-tight">{p.name}</h3>
+                <p className="mt-3 text-paper/70 text-[15px] leading-relaxed">{p.description}</p>
+                <p className="mt-8 text-sm font-medium text-volt">{p.cta.label}</p>
               </div>
             );
             return (
               <Reveal key={p.name} delay={i * 100}>
-                {"href" in p.cta && p.cta.href ? (
+                {p.cta.href ? (
                   <a href={p.cta.href} target="_blank" rel="noreferrer">{inner}</a>
                 ) : (
                   <Link to={p.cta.to!}>{inner}</Link>
