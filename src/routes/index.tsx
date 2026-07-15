@@ -5,6 +5,7 @@ import { Problem } from "@/components/foeg/Problem";
 import { Offer } from "@/components/foeg/Offer";
 import { Work } from "@/components/foeg/Work";
 import { Process } from "@/components/foeg/Process";
+import { HowWeWork } from "@/components/foeg/HowWeWork";
 import { Learning } from "@/components/foeg/Learning";
 import { Community } from "@/components/foeg/Community";
 import { Investor } from "@/components/foeg/Investor";
@@ -39,6 +40,7 @@ function Index() {
       <Offer />
       <Work />
       <Process />
+      <HowWeWork />
       <Learning />
       <Community />
       <Investor />

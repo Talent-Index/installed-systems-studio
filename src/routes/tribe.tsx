@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Nav } from "@/components/foeg/Nav";
 import { ApplyFooter } from "@/components/foeg/ApplyFooter";
 import { Reveal } from "@/components/foeg/Reveal";
+import { TeamAvatar } from "@/components/foeg/TeamAvatar";
 
 const APPLY_URL = "https://tally.so/r/LZMbQl";
 const TITLE = "Our Tribe — FOEG Labs";
@@ -45,12 +46,6 @@ const team = [
   },
 ];
 
-const founders = [
-  { name: "Founder Name", building: "Building: a cross-border merchant settlement layer." },
-  { name: "Founder Name", building: "Building: AI-powered logistics dispatch for SMEs." },
-  { name: "Founder Name", building: "Building: stablecoin-native payroll for African startups." },
-];
-
 function XIcon({ size = 18 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -59,18 +54,11 @@ function XIcon({ size = 18 }: { size?: number }) {
   );
 }
 
-function Avatar({ name }: { name: string }) {
-  const initials = name
-    .split(" ")
-    .map((n) => n[0])
-    .slice(0, 2)
-    .join("");
-  return (
-    <div className="h-24 w-24 rounded-full bg-[color:var(--divider)] ring-2 ring-transparent group-hover:ring-volt transition flex items-center justify-center">
-      <span className="font-display font-extrabold text-2xl text-volt">{initials}</span>
-    </div>
-  );
-}
+const teamAvatars: { initial: string; variant: "volt" | "paper" }[] = [
+  { initial: "L", variant: "volt" },
+  { initial: "C", variant: "paper" },
+  { initial: "G", variant: "volt" },
+];
 
 function TribePage() {
   useEffect(() => {
@@ -104,7 +92,7 @@ function TribePage() {
             {team.map((p, i) => (
               <Reveal key={p.name} delay={i * 80}>
                 <article className="card-surface group h-full bg-surface border border-divider rounded-lg p-8">
-                  <Avatar name={p.name} />
+                  <TeamAvatar initial={teamAvatars[i]?.initial ?? p.name.charAt(0)} variant={teamAvatars[i]?.variant ?? "volt"} />
                   <h3 className="mt-6 font-display font-bold text-2xl">{p.name}</h3>
                   <p className="mt-1 font-mono text-[11px] tracking-widest text-volt uppercase">{p.title}</p>
                   <p className="mt-4 text-paper/70 leading-relaxed text-sm">{p.bio}</p>
@@ -154,19 +142,16 @@ function TribePage() {
             These are the founders building real products within the FOEG Labs / Avalanche operator network.
           </p>
 
-          <div className="mt-12 grid md:grid-cols-3 gap-5">
-            {founders.map((f, i) => (
-              <Reveal key={i} delay={i * 80}>
-                <article className="card-surface h-full bg-surface border border-divider rounded-lg p-6">
-                  <h3 className="font-display font-bold text-xl">{f.name}</h3>
-                  <p className="mt-2 text-sm text-paper/70">{f.building}</p>
-                  <span className="mt-5 inline-flex font-mono text-[10px] tracking-widest text-volt border border-volt/50 px-2.5 py-1 rounded-full">
-                    AVALANCHE MEMBER
-                  </span>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal>
+            <article className="mt-12 bg-ink border border-dashed border-divider rounded-lg p-10 md:p-14 text-center">
+              <p className="font-mono text-[11px] tracking-[0.2em] text-volt uppercase">
+                Founder Spotlights — Coming Soon
+              </p>
+              <p className="mt-5 max-w-xl mx-auto text-paper/70 leading-relaxed">
+                We'll feature real founders building on FOEG-installed systems as Sprint case studies land.
+              </p>
+            </article>
+          </Reveal>
         </div>
       </section>
 
